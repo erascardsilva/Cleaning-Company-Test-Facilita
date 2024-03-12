@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
  "nome": "John Doe",
- "email": "john.doe@example.com.uak",
+ "email": "john.doe@example.com.uaeek",
  "telefone": "123456789"
 }
 
@@ -21,8 +21,7 @@ GET http://localhost:3001/api/checkdata
 # Obter um usuário específico por ID
 ###
 
-GET http://localhost:3001/anpm install axios
-pi/checkdata/15
+GET http://localhost:3001/api/checkdata/2
 
 ###
 # Atualizar um usuário existente
