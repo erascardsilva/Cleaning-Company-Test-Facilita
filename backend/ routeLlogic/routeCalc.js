@@ -3,26 +3,26 @@ const NodeGeocoder = require('node-geocoder');
 const route = express.Router();
 const calRouteExcellent = require('./excellent');
 
-// Configuração para utilizar o serviço Nominatim
+// Configuration to use the Nominatim service
 const options = {
     provider: 'openstreetmap'
 };
 const geocoder = NodeGeocoder(options);
 
 route.post('/calculate-route', async (req, res) => {
-    // Receber informações da empresa e dos clientes
+
     const { company, client1, client2 } = req.body;
 
     try {
-        // Obter coordenadas para a empresa e clientes
+        // Get coordinates for the company and customers
         const companyCoordinates = await fetchCoordinates(company.cep);
         const client1Coordinates = await fetchCoordinates(client1.cep);
         const client2Coordinates = await fetchCoordinates(client2.cep);
 
-        // Calcular a rota ótima usando as coordenadas e os nomes dos clientes
+        // Calculate the optimal route using customer coordinates and names
         const optimalRoute = calRouteExcellent(companyCoordinates, client1Coordinates, client2Coordinates, client1.name, client2.name);
 
-        // Retornar a rota ótima e a mensagem como resposta JSON
+        // Return the optimal route and message as a JSON response
         res.json(optimalRoute);
     } catch (error) {
         console.error('Erro ao calcular rota ótima:', error.message);
@@ -44,15 +44,14 @@ async function fetchCoordinates(cep) {
 }
 
 function buildMessage(optimalRoute, companyName, client1Name, client2Name) {
-    // Verificar se os nomes dos clientes foram passados corretamente
+    // Check if customer names were passed correctly
     if (client1Name === undefined || client2Name === undefined || client1Name === null || client2Name === null) {
         throw new Error('Nomes dos clientes não fornecidos corretamente');
     }
-
-    // Montar a lista de clientes na ordem de visita
+    // Assemble the list of customers in the order of visit
     const clientList = [client1Name, client2Name];
 
-    // Construir a mensagem com a lista de clientes na ordem de visita e a empresa
+    // Build the message with the list of customers in the order of visit and the company
     let message = `Você está na empresa ${companyName}. Deverá visitar primeiro `;
     for (let i = 0; i < clientList.length; i++) {
         message += `${clientList[i]}`;

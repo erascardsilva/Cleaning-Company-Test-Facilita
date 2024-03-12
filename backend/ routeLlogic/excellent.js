@@ -1,4 +1,12 @@
-// Função para calcular a distância entre dois pontos
+
+// Function to calculate the distance between two points
+function calDistance(point1, point2) {
+    const deltaX = point2.longitude - point1.longitude;
+    const deltaY = point2.latitude - point1.latitude;
+
+    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+// Function to calculate the distance between two points
 function calDistance(point1, point2) {
     const deltaX = point2.longitude - point1.longitude;
     const deltaY = point2.latitude - point1.latitude;
@@ -6,32 +14,21 @@ function calDistance(point1, point2) {
     return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
-// Função para calcular a rota ótima entre a empresa e os clientes
-// Função para calcular a distância entre dois pontos
-function calDistance(point1, point2) {
-    const deltaX = point2.longitude - point1.longitude;
-    const deltaY = point2.latitude - point1.latitude;
-
-    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-}
-
-// Função para calcular a rota ótima entre a empresa e os clientes
+// Function to calculate the optimal route between the company and customers
 function calRouteExcellent(companyCoordinates, client1Coordinates, client2Coordinates, client1Name, client2Name) {
-    // Verifica se os parâmetros são objetos válidos
     if (!companyCoordinates || !client1Coordinates || !client2Coordinates) {
         throw new Error('As coordenadas da empresa e dos clientes devem ser fornecidas');
     }
-
-    // Calcula as distâncias entre os pontos
+    // Calculate distances between points
     const distance1 = calDistance(companyCoordinates, client1Coordinates);
     const distance2 = calDistance(companyCoordinates, client2Coordinates);
     const distance3 = calDistance(client1Coordinates, client2Coordinates);
 
-    // Calcula a distância total percorrida para cada ordem de visitação dos clientes
+    // Calculates the total distance traveled for each customer visit order
     const totalDistance1 = distance1 + distance3;
     const totalDistance2 = distance2 + distance3;
 
-    // Escolhe a ordem que minimize a distância total
+    // Choose the order that minimizes the total distance
     let sortedClients;
     let totalDistance;
     let message;
