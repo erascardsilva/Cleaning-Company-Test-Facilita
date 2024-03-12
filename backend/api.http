@@ -58,14 +58,42 @@ Content-Type: application/json
         "cep": "08141-300"
     },
     "client1": {
-        "name": "Cliente longe",
+        "name": "Cliente 1",
          "cep": "08141-330"
         
         
     },
     "client2": {
-        "name": "Cliente perto",
+        "name": "Cliente 2",
         "cep": "59920-000"
        
     }
+}
+
+### Testando caixeiro viajante Todos
+POST http://localhost:3001/api/calculate-route-all
+Content-Type: application/json
+
+{
+    "company": {
+        "cep": "08141-300"
+    },
+    "clients": [
+        {
+            "cep": "59920-000",
+            "name": "Cliente 1"
+        },
+        {
+            "cep": "08141-330",
+            "name": "Cliente 2"
+        },
+        {
+            "cep": "12345-678",
+            "name": "Cliente 3"
+        },
+        {
+            "cep": "00145-678",
+            "name": "Cliente 4"
+        }
+    ]
 }

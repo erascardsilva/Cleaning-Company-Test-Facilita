@@ -21,8 +21,9 @@ app.use('/api', userRoute);
 //connect data cep 
 app.use('/api' , cepRoute);
 
-// Calcule excelent route
+// Calcule excelent route  and ALL
 app.use('/api', routeCalc);
+
 
 
 // Servidor ON

@@ -1,7 +1,7 @@
 const express = require('express');
 const NodeGeocoder = require('node-geocoder');
 const route = express.Router();
-const calRouteExcellent = require('./excellent');
+const { calRouteExcellent, calRouteAllClients }= require('./excellent');
 
 // Configuration to use the Nominatim service
 const options = {
@@ -42,6 +42,30 @@ async function fetchCoordinates(cep) {
         throw error;
     }
 }
+
+route.post('/calculate-route-all', async (req, res) => {
+    const { company, clients } = req.body;
+
+    try {
+        // Get coordinates for the company and clients
+        const companyCoordinates = await fetchCoordinates(company.cep);
+        const clientCoordinates = await Promise.all(clients.map(async (client) => {
+            return {
+                ...await fetchCoordinates(client.cep),
+                name: client.name
+            };
+        }));
+
+        // Calculate the optimal route passing through all clients
+        const optimalRoute = calRouteAllClients(companyCoordinates, clientCoordinates);
+
+        // Return the optimal route and message as a JSON response
+        res.json(optimalRoute);
+    } catch (error) {
+        console.error('Erro ao calcular rota ótima:', error.message);
+        res.status(500).json({ message: 'Erro ao calcular rota ótima' });
+    }
+});
 
 function buildMessage(optimalRoute, companyName, client1Name, client2Name) {
     // Check if customer names were passed correctly
