@@ -21,7 +21,8 @@ GET http://localhost:3001/api/checkdata
 # Obter um usuário específico por ID
 ###
 
-GET http://localhost:3001/api/checkdata/15
+GET http://localhost:3001/anpm install axios
+pi/checkdata/15
 
 ###
 # Atualizar um usuário existente
@@ -41,3 +42,31 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3001/api/deletedata/1
+
+
+### Testando a rota de busca de coordenadas por CEP
+GET http://localhost:3001/api/cep/08141-300 HTTP/1.1
+
+
+### Testando caixeiro viajante
+
+POST http://localhost:3001/api/calculate-route HTTP/1.1
+Content-Type: application/json
+
+{
+    "company": {
+        "name": "Cleaning",
+        "cep": "08141-300"
+    },
+    "client1": {
+        "name": "Cliente longe",
+         "cep": "08141-330"
+        
+        
+    },
+    "client2": {
+        "name": "Cliente perto",
+        "cep": "59920-000"
+       
+    }
+}

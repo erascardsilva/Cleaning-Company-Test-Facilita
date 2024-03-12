@@ -1,49 +1,58 @@
-// Function to calculate the distance between two points
+// Função para calcular a distância entre dois pontos
 function calDistance(point1, point2) {
-    const deltaX = point2.x - point1.x;
-    const deltaY = point2.y - point1.y;
+    const deltaX = point2.longitude - point1.longitude;
+    const deltaY = point2.latitude - point1.latitude;
 
     return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
+// Função para calcular a rota ótima entre a empresa e os clientes
+// Função para calcular a distância entre dois pontos
+function calDistance(point1, point2) {
+    const deltaX = point2.longitude - point1.longitude;
+    const deltaY = point2.latitude - point1.latitude;
 
-// Function to calculate the optimal route between the company and customers
-function calRouteExcelent(Company, clients) {
-// Input check: Ensures that Company and clients are valid objects
-    if (typeof Company !== 'object' || !Array.isArray(clients)) {
-        throw new Error('Company deve ser um objeto e clients deve ser um array');
-    }
-
-    // Construction of the distance matrix
-    const clientWithCompany = [Company, ...clients];
-    const distance = [];
-
-    for (let i = 0; i < clientWithCompany.length; i++) {
-        distance[i] = [];
-        for (let j = 0; j < clientWithCompany.length; j++) {
-            distance[i][j] = calDistance(clientWithCompany[i], clientWithCompany[j]);
-        }
-    }
-
-    const visited = Array(clientWithCompany.length).fill(false);
-    visited[0] = true;
-    const routeExcelent = [0];
-
-    // Algoritmo  Caixeiro Viajante
-    for (let i = 0; i < clientWithCompany.length - 1; i++) {
-        let lowDistance = Infinity;
-        let nextClient = -1;
-        for (let j = 0; j < clientWithCompany.length; j++) {
-            if (!visited[j] && distance[routeExcelent[i]][j] < lowDistance) {
-                lowDistance = distance[routeExcelent[i]][j];
-                nextClient = j;
-            }
-        }
-        visited[nextClient] = true;
-        routeExcelent.push(nextClient);
-    }
-
-    return routeExcelent.map(index => clientWithCompany[index]);
+    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
-module.exports = calRouteExcelent;
+// Função para calcular a rota ótima entre a empresa e os clientes
+function calRouteExcellent(companyCoordinates, client1Coordinates, client2Coordinates, client1Name, client2Name) {
+    // Verifica se os parâmetros são objetos válidos
+    if (!companyCoordinates || !client1Coordinates || !client2Coordinates) {
+        throw new Error('As coordenadas da empresa e dos clientes devem ser fornecidas');
+    }
+
+    // Calcula as distâncias entre os pontos
+    const distance1 = calDistance(companyCoordinates, client1Coordinates);
+    const distance2 = calDistance(companyCoordinates, client2Coordinates);
+    const distance3 = calDistance(client1Coordinates, client2Coordinates);
+
+    // Calcula a distância total percorrida para cada ordem de visitação dos clientes
+    const totalDistance1 = distance1 + distance3;
+    const totalDistance2 = distance2 + distance3;
+
+    // Escolhe a ordem que minimize a distância total
+    let sortedClients;
+    let totalDistance;
+    let message;
+
+    if (totalDistance1 < totalDistance2) {
+        sortedClients = [client1Coordinates, client2Coordinates];
+        totalDistance = totalDistance1;
+        message = `Você deverá visitar primeiro ${client1Name} e depois ${client2Name} numa distância total de ${totalDistance}`;
+    } else {
+        sortedClients = [client2Coordinates, client1Coordinates];
+        totalDistance = totalDistance2;
+        message = `Você deverá visitar primeiro ${client2Name} e depois ${client1Name} numa distância total de ${totalDistance}`;
+    }
+
+    return {
+        route: sortedClients,
+        totalDistance,
+        message
+    };
+}
+
+module.exports = calRouteExcellent;
+
+
