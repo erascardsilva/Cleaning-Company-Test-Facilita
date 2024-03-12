@@ -1,0 +1,43 @@
+###
+# Criar um novo usuário
+###
+
+POST http://localhost:3001/api/savedate
+Content-Type: application/json
+
+{
+ "nome": "John Doe",
+ "email": "john.doe@example.com.uak",
+ "telefone": "123456789"
+}
+
+###
+# Obter todos os usuários
+###
+
+GET http://localhost:3001/api/checkdata
+
+###
+# Obter um usuário específico por ID
+###
+
+GET http://localhost:3001/api/checkdata/15
+
+###
+# Atualizar um usuário existente
+###
+
+PUT http://localhost:3001/api/updatedata/15
+Content-Type: application/json
+
+{
+ "nome": "Updated Name",
+ "email": "updated.email@example.com",
+ "telefone": "987654321"
+}
+
+###
+# Excluir um usuário por ID
+###
+
+DELETE http://localhost:3001/api/deletedata/1

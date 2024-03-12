@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+ db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: erasmo_dev
+      POSTGRES_PASSWORD: 3727
+      POSTGRES_DB: Cleaning-Company
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d/createdatabase.sql 
+    healthcheck:
+      test: ["CMD", "sh", "-c", "pg_isready -U erasmo_dev -d Cleaning-Company"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: ["postgres", "-c", "listen_addresses=*"]  
+
+ backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      PGUSER: erasmo_dev
+      PGDATABASE: Cleaning-Company
+      PGPASSWORD: 3727
+      PGPORT: 5432 
+      PGHOST: db  
+
+ frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
