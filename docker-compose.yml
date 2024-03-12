@@ -7,32 +7,32 @@ services:
     environment:
       POSTGRES_USER: erasmo_dev
       POSTGRES_PASSWORD: 3727
-      POSTGRES_DB: Cleaning-Company
+      POSTGRES_DB: CleaningCompany
     ports:
       - "5433:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
-      - ./sql:/docker-entrypoint-initdb.d/createdatabase.sql 
+      - ./sql:/docker-entrypoint-initdb.d/
     healthcheck:
-      test: ["CMD", "sh", "-c", "pg_isready -U erasmo_dev -d Cleaning-Company"]
+      test: ["CMD", "sh", "-c", "pg_isready -U erasmo_dev -d CleaningCompany"]
       interval: 10s
       timeout: 5s
       retries: 5
-    command: ["postgres", "-c", "listen_addresses=*"]  
+    command: ["postgres", "-c", "listen_addresses=*"]
 
  backend:
     build: ./backend
-    restart: always
+    restart: on-failure
     ports:
       - "3001:3001"
     depends_on:
       - db
     environment:
       PGUSER: erasmo_dev
-      PGDATABASE: Cleaning-Company
+      PGDATABASE: CleaningCompany
       PGPASSWORD: 3727
-      PGPORT: 5432 
-      PGHOST: db  
+      PGPORT: 5433
+      PGHOST: db
 
  frontend:
     build: ./frontend

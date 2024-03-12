@@ -7,8 +7,8 @@ const route = express.Router();
 //Route post
 route.post('/savedate', async (req, res) => {
     try {
-        const { nome, email, telefone } = req.body;
-        const newUser = await pool.query('INSERT INTO clientes (nome, email, telefone) VALUES ($1, $2, $3) RETURNING *', [nome, email, telefone]);
+        const { nome, email, telefone, cep } = req.body;
+        const newUser = await pool.query('INSERT INTO clientes (nome, email, telefone, cep) VALUES ($1, $2, $3, $4) RETURNING *', [nome, email, telefone, cep]);
         res.json(newUser.rows[0]);
     } catch (err) {
         console.error(err.message);
@@ -43,8 +43,8 @@ route.get('/checkdata/:id', async (req, res) => {
 route.put('/updatedata/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { nome, email, telefone } = req.body;
-        const upUser = await pool.query(`UPDATE clientes SET nome = $1, email = $2, telefone = $3 WHERE id = $4 RETURNING *`, [nome, email, telefone, id]);
+        const { nome, email, telefone, cep } = req.body;
+        const upUser = await pool.query(`UPDATE clientes SET nome = $1, email = $2, telefone = $3, cep = $4 WHERE id = $5 RETURNING *`, [nome, email, telefone, cep, id]);
         res.json(upUser.rows[0]);
     } catch (err) {
         console.error(err.message);

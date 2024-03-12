@@ -7,8 +7,9 @@ Content-Type: application/json
 
 {
  "nome": "John Doe",
- "email": "john.doe@example.com.uaeek",
- "telefone": "123456789"
+ "email": "john.doe@example.com.dxys",
+ "telefone": "123456789",
+ "cep": "12345-678"
 }
 
 ###
@@ -33,7 +34,8 @@ Content-Type: application/json
 {
  "nome": "Updated Name",
  "email": "updated.email@example.com",
- "telefone": "987654321"
+ "telefone": "987654321",
+ "cep": "12345-678"
 }
 
 ###
