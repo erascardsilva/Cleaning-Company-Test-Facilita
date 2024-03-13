@@ -155,7 +155,22 @@ POST http://localhost:3001/api/calculate-route-all
 Content-Type: application/json
 
 _______________________________________________________________________
+<h2>Calculo de rotas</h2>
 
+Foi necessario para os calculos de distancia ter Longitude e Latidude de cada Cep . utilizei a biblioteca do node ( node-geocoder ), 
+tendo as coordenadas , assim usei a fórmula euclidiana de maneira mais simplificada possivel : 
+__________________________________________________________
+d = √((x2 - x1)^2 + (y2 - y1)^2)
+__________________________________________________________
+function calDistance(point1, point2) {
+    const deltaX = point2.longitude - point1.longitude;
+    const deltaY = point2.latitude - point1.latitude;
+
+    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+e depois utilizeis calRouteExcellent() para calcular a distancia..
+
+__________________________________________________________
 <h2> Front End </H2>
 
 Cadastro
