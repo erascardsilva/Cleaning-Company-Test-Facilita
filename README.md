@@ -158,4 +158,22 @@ _______________________________________________________________________
 
 <h2> Front End </H2>
 
+Cadastro
+![image](https://github.com/erascardsilva/Cleaning-Company-Test-Facilita/assets/70297459/e6a1daf2-7a7b-47bb-bb11-207b3b44d5a5)
+_______________________________________________________________________
+Verifica tabela
+![image](https://github.com/erascardsilva/Cleaning-Company-Test-Facilita/assets/70297459/649a87d2-3059-4c35-ab83-3e044ededee4)
+_______________________________________________________________________
+Edita dados
+![image](https://github.com/erascardsilva/Cleaning-Company-Test-Facilita/assets/70297459/aa59945d-e988-4009-aee1-60ebcef87ad6)
+_______________________________________________________________________
+Calcula Rotas 
+![image](https://github.com/erascardsilva/Cleaning-Company-Test-Facilita/assets/70297459/cf101787-623c-40c1-bd70-9fcad4b740bf)
+_______________________________________________________________________
+Faz a Rota livre
+![image](https://github.com/erascardsilva/Cleaning-Company-Test-Facilita/assets/70297459/4df7f755-1cce-4b22-9b62-c9a74ed66b45)
+
+
+
+
 
