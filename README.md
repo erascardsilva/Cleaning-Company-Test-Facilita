@@ -1,7 +1,6 @@
  <h2>Descrição do Aplicativo</h2>
 
-Aplicativo de teste para avaliar minhas habilidades em programação.
-Sistema de uma empresa de limpeza (Cleaning Company) para gerenciamento de clientes, e calculo de rotas.
+Aplicativo de Sistema de uma empresa de limpeza (Cleaning Company) para gerenciamento de clientes, e calculo de rotas.
 Composto backend ( Node.js ), banco de dados ( PostgreSQL) e frontend ( React ).
 
 Pedido 1:
