@@ -117,10 +117,12 @@ ___________________________________________________________________
 
 <h2> Rotas da api backend </h2>
 _____________________________________________________________________
+
 Criar cliente
 POST http://localhost:3001/api/savedate
 Content-Type: application/json
 { "nome": "John Doe","email": "john.doe@example.com.dxyjhjsg", "telefone":"123456789", "cep": "12345-678"}
+
 ______________________________________________________________________
 
 Obter (GET) todos os dados
