@@ -69,22 +69,21 @@ CREATE TABLE clientes (
 );
 
 -- DML (Data Manipulation Language) uso
-----------------------------------------------------------
 Inserir Dados
 INSERT INTO clientes (nome, email, telefone, cep) VALUES ($1, $2, $3, $4) RETURNING *'
------------------------------------------------------------
+
 Buscar todos dados
 SELECT * FROM clientes
------------------------------------------------------------
+
 Buscar por ID
 SELECT * FROM clientes WHERE id = $1`
------------------------------------------------------------
+
 Atualizar 
 UPDATE clientes SET nome = $1, email = $2, telefone = $3, cep = $4 WHERE id = $5 RETURNING *`
------------------------------------------------------------
+
 Deletar
 DELETE FROM clientes WHERE id = $1
------------------------------------------------------------
+
 
 
 
@@ -94,24 +93,24 @@ Criar cliente
 POST http://localhost:3001/api/savedate
 Content-Type: application/json
 { "nome": "John Doe","email": "john.doe@example.com.dxyjhjsg", "telefone":"123456789", "cep": "12345-678"}
-------------------------------------------------------------
+
 
 Obter (GET) todos os dados
 GET http://localhost:3001/api/checkdata
------------------------------------------------------------
+
 
 Obter por ID
 GET http://localhost:3001/api/checkdata/ID
------------------------------------------------------------
+
 
 Update 
 PUT http://localhost:3001/api/updatedata/15
 Content-Type: application/json
 { "nome": "Updated Name", "email": "updated.email@example.com", "telefone":"987654321", "cep": "12345-678"}
-------------------------------------------------------------
+
 Delete cliente
 DELETE http://localhost:3001/api/deletedata/ID
-------------------------------------------------------------
+
 
 Rota para calculo de Distancia configurando o inicio
 
@@ -119,12 +118,12 @@ POST http://localhost:3001/api/calculate-route HTTP/1.1
 Content-Type: application/json
 {"company": {"name": "Cleaning","cep": "08141-300"},"client1": {"name": "Cliente 1",
  "cep": "08141-330"},"client2": {"name": "Cliente 2","cep": "59920-000"}}
- --------------------------------------------------------------
+ 
 
 Rota calculo de distancia com diversos destinos 
 POST http://localhost:3001/api/calculate-route-all
 Content-Type: application/json
----------------------------------------------------------------
+
 
 
 
