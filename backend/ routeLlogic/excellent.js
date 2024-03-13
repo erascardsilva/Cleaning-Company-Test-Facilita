@@ -1,5 +1,5 @@
 
-// Function to calculate the distance between two points
+// Function to calculate the distance between two points   form { d = √((x2 - x1)^2 + (y2 - y1)^2) }
 function calDistance(point1, point2) {
     const deltaX = point2.longitude - point1.longitude;
     const deltaY = point2.latitude - point1.latitude;
