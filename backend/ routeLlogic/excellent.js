@@ -79,6 +79,7 @@ function calRouteAllClients(companyCoordinates, clientCoordinatesList) {
 
     //Convert KM 
     const totalDistanceKm = (totalDistance / 1000).toFixed(2);
+    
 
     // Construct the message with the visitation order of the clients and the total distance traveled
     let message = `Você deverá visitar: `;

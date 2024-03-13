@@ -1,30 +1,32 @@
 const express = require('express');
+const cors = require('cors'); // Importe o pacote cors
 const app = express();
 const pool = require('./config/configDB');
 const userRoute = require('./crud/userCrud');
-const routeCalc = require('./ routeLlogic/routeCalc');
+const routeCalc = require('./ routeLlogic/routeCalc');; 
 const cepRoute = require('./externService/apiCep'); 
 const PORT = process.env.PORT || 3001;
 
-//Enabling use of JSON
+// Habilitando o uso de JSON
 app.use(express.json());
 
-//middleware no Express.js
+// Middleware no Express.js para adicionar pool ao objeto de solicitação
 app.use((req, res, next) => {
     req.pool = pool;
     next();
 });
 
-//connection to routes in /crud
+// Adicionando o middleware CORS
+app.use(cors());
+
+// Conexão com rotas em /crud
 app.use('/api', userRoute);
 
-//connect data cep 
-app.use('/api' , cepRoute);
+// Conexão com dados do CEP 
+app.use('/api', cepRoute);
 
-// Calcule excelent route  and ALL
+// Rota para cálculo de rotas
 app.use('/api', routeCalc);
-
-
 
 // Servidor ON
 app.listen(PORT, () => {

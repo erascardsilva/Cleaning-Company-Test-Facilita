@@ -10,4 +10,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npm start & echo 'Acesse http://localhost:3000 no seu navegador' && wait"]
+
