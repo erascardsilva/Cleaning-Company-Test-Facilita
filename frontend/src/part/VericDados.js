@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AiOutlineEdit, AiOutlineDelete, AiOutlineSearch } from 'react-icons/ai'; 
+import {  AiOutlineDelete, AiOutlineSearch } from 'react-icons/ai'; 
 
 function VerificarDados() {
     

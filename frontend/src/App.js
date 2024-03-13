@@ -8,6 +8,7 @@ import EditarUsuario from './part/EditarUser'; // Importe o componente de ediç�
 
 function App() {
   // State para armazenar o conteúdo dinâmico e controle de visibilidade
+  // eslint-disable-next-line
   const [content, setContent] = useState('Conteúdo inicial');
   const [showCadastro, setShowCadastro] = useState(false);
   const [showVerificarDados, setShowVerificarDados] = useState(false);

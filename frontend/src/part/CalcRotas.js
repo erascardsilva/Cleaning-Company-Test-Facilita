@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
+//import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const baseURL = 'http://localhost:3001/api';
