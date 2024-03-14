@@ -170,6 +170,28 @@ __________________________________________________________
 
 e depois utilizeis calRouteExcellent() para calcular a distancia..
 
+<h2>AJUSTES</h2>
+
+Depois de uma analise mesmo fora do prazo percebi que a formula euclidiana so calcula distancias retas e não seria ideal,
+ajustei coloque a formula de haversine resolvi corrigir e deixar comentada a parte euclidiana no codigo
+d=R⋅c 
+c=2⋅atan2( a, −a )
+a=sin 2 (2Δφ​ )+cos(φ 1 )⋅cos(φ 2 )⋅sin 2 (2Δλ )
+
+    const toRadians = (value) => (value * Math.PI) / 180;
+    const R = 6371000; 
+
+    const A1 = toRadians(point1.latitude);
+    const A2 = toRadians(point2.latitude);
+    const B1 = toRadians(point2.latitude - point1.latitude);
+    const B2 = toRadians(point2.longitude - point1.longitude);
+
+    const a = Math.sin(B1 / 2) * Math.sin(B1 / 2) +
+              Math.cos(A1) * Math.cos(A2) * Math.sin(B2 / 2) * Math.sin(B2 / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+
+A correção foi pelo calculo errado da distencia em Kilometros não pela ordem da lista que foi o que foi proposto no teste. 
 __________________________________________________________
 <h2> Front End </H2>
 
