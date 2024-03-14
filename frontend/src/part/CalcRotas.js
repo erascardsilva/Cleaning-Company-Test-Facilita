@@ -54,7 +54,7 @@ function CalcularRotas() {
 
       if (response.ok) {
         const responseData = await response.json();
-        setMensagemBackend(`Total de distância: ${responseData.totalDistance} km - ${responseData.message}`);
+        setMensagemBackend(`Total de distância: ${responseData.totalDistance} m - ${responseData.message}`);
       } else {
         setMensagemBackend('Erro ao calcular rota.');
       }

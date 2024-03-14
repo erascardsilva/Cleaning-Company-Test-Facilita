@@ -54,14 +54,15 @@ function calRouteExcellent(companyCoordinates, client1Coordinates, client2Coordi
     totalDistance = totalDistance1 < totalDistance2 ? totalDistance1 : totalDistance2;
     
     // Convert total distance to kilometers
-    const totalDistanceKm = (totalDistance / 1000).toFixed(2);
+    const totalDistanceKm = (totalDistance / 1000).toFixed(3)
+   
 
     if (totalDistance1 < totalDistance2) {
         sortedClients = [client1Coordinates, client2Coordinates];
-        message = `Você deverá visitar primeiro ${client1Name} e depois ${client2Name} numa distância total de ${totalDistanceKm} km`;
+        message = `Você deverá visitar primeiro ${client1Name} e depois ${client2Name} numa distância total de ${totalDistanceKm} m`;
     } else {
         sortedClients = [client2Coordinates, client1Coordinates];
-        message = `Você deverá visitar primeiro ${client2Name} e depois ${client1Name} numa distância total de ${totalDistanceKm} km`;
+        message = `Você deverá visitar primeiro ${client2Name} e depois ${client1Name} numa distância total de ${totalDistanceKm} m`;
     }
 
     return {
@@ -102,7 +103,7 @@ function calRouteAllClients(companyCoordinates, clientCoordinatesList) {
     totalDistance += calDistance(route[route.length - 2], route[0]);
 
     //Convert KM 
-    const totalDistanceKm = (totalDistance / 1000).toFixed(2);
+    const totalDistanceKm = (totalDistance / 1000).toFixed(3);
     
 
     // Construct the message with the visitation order of the clients and the total distance traveled
@@ -113,7 +114,7 @@ function calRouteAllClients(companyCoordinates, clientCoordinatesList) {
             message += ', ';
         }
     }
-    message += `, e então retornar para a empresa Cleaning-Company. A distância total percorrida será de ${totalDistanceKm} km.`;
+    message += `, e então retornar para a empresa Cleaning-Company. A distância total percorrida será de ${totalDistanceKm} m.`;
 
     return {
         route,
