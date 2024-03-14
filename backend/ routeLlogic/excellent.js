@@ -1,11 +1,35 @@
 
 // Function to calculate the distance between two points   form { d = √((x2 - x1)^2 + (y2 - y1)^2) }
-function calDistance(point1, point2) {
-    const deltaX = point2.longitude - point1.longitude;
-    const deltaY = point2.latitude - point1.latitude;
+// function calDistance(point1, point2) {
+//     const deltaX = point2.longitude - point1.longitude;
+//     const deltaY = point2.latitude - point1.latitude;
 
-    return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+//     return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+// }
+
+//CORREÇÂO
+// Then I realized that the correct calculation would be with the Haversine formula de Haversine
+// a=sin 2 (2B1​ )+cos(φ 1 )⋅cos(φ 2 )⋅sin 2 (2B2 )
+// d=R⋅c 
+// c=2⋅atan2( a, −a )
+// a=sin 2 (2B1​ )+cos(φ 1 )⋅cos(φ 2 )⋅sin 2 (2B2 )
+
+function calDistance(point1, point2) {
+    const toRadians = (value) => (value * Math.PI) / 180;
+    const R = 6371000; // Raio da Terra em metros
+
+    const A1 = toRadians(point1.latitude);
+    const A2 = toRadians(point2.latitude);
+    const B1 = toRadians(point2.latitude - point1.latitude);
+    const B2 = toRadians(point2.longitude - point1.longitude);
+
+    const a = Math.sin(B1 / 2) * Math.sin(B1 / 2) +
+              Math.cos(A1) * Math.cos(A2) * Math.sin(B2 / 2) * Math.sin(B2 / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return R * c; // Distância em metros
 }
+
 
 // Function to calculate the optimal route between the company and customers
 function calRouteExcellent(companyCoordinates, client1Coordinates, client2Coordinates, client1Name, client2Name) {
