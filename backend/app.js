@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // Importe o pacote cors
+const cors = require('cors'); 
 const app = express();
 const pool = require('./config/configDB');
 const userRoute = require('./crud/userCrud');

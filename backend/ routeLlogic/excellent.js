@@ -27,7 +27,7 @@ function calDistance(point1, point2) {
               Math.cos(A1) * Math.cos(A2) * Math.sin(B2 / 2) * Math.sin(B2 / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-    return R * c; // Distância em metros
+    return R * c; 
 }
 
 

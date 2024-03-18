@@ -4,7 +4,7 @@ import CadastroUsuario from './part/CadastPage';
 import VerificarDados from './part/VericDados';
 import CalcularRotas from './part/CalcRotas';
 import FazerRotas from './part/FazerRota';
-import EditarUsuario from './part/EditarUser'; // Importe o componente de edição de usuário
+import EditarUsuario from './part/EditarUser'; 
 
 function App() {
   // State para armazenar o conteúdo dinâmico e controle de visibilidade
@@ -14,7 +14,7 @@ function App() {
   const [showVerificarDados, setShowVerificarDados] = useState(false);
   const [showCalcularRotas, setShowCalcularRotas] = useState(false);
   const [showFazerRotas, setShowFazerRotas] = useState(false);
-  const [showEditarUsuario, setShowEditarUsuario] = useState(false); // Adicione o estado para a página de Edição de Usuário
+  const [showEditarUsuario, setShowEditarUsuario] = useState(false); 
 
   // Funções para manipular o conteúdo ao clicar nos botões
   const handleCadastro = () => {
@@ -23,7 +23,7 @@ function App() {
     setShowVerificarDados(false);
     setShowCalcularRotas(false);
     setShowFazerRotas(false);
-    setShowEditarUsuario(false); // Certifique-se de ocultar a página de Edição de Usuário ao clicar no botão Cadastro Dados
+    setShowEditarUsuario(false); 
   }
 
   const handleVerificar = () => {
@@ -32,7 +32,7 @@ function App() {
     setShowVerificarDados(true);
     setShowCalcularRotas(false);
     setShowFazerRotas(false);
-    setShowEditarUsuario(false); // Ocultar a página de Edição de Usuário ao clicar no botão Verificar Dados
+    setShowEditarUsuario(false); 
   }
 
   const handleCalcularRotas = () => {
@@ -41,7 +41,7 @@ function App() {
     setShowVerificarDados(false);
     setShowCalcularRotas(true);
     setShowFazerRotas(false);
-    setShowEditarUsuario(false); // Ocultar a página de Edição de Usuário ao clicar no botão Calcular Rotas
+    setShowEditarUsuario(false); 
   }
 
   const handleFazerRotas = () => {
@@ -50,7 +50,7 @@ function App() {
     setShowVerificarDados(false);
     setShowCalcularRotas(false);
     setShowFazerRotas(true);
-    setShowEditarUsuario(false); // Ocultar a página de Edição de Usuário ao clicar no botão Fazer Rotas
+    setShowEditarUsuario(false); 
   }
 
   const handleEditarUsuario = () => {
@@ -59,7 +59,7 @@ function App() {
     setShowVerificarDados(false);
     setShowCalcularRotas(false);
     setShowFazerRotas(false);
-    setShowEditarUsuario(true); // Exibir a página de Edição de Usuário ao clicar no botão Editar Usuário
+    setShowEditarUsuario(true); 
   }
 
   return (
